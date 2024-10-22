@@ -8,4 +8,4 @@ RUN export ARCH="$(uname -m)" && \
     echo "PATH="${PATH}"" >> ${HOME}/.profile && \
     echo "PATH="${PATH}"" >> ${HOME}/.bashrc && \
     echo "GCC_HOME="${GCC_HOME}"" >> ${HOME}/.bashrc && \
-    echo "JAVA_HOME="${JAVA_HOME}"" >> ${HOME}/.bashrc && \
+    echo "JAVA_HOME="${JAVA_HOME}"" >> ${HOME}/.bashrc
