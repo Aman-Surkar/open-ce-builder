@@ -9,5 +9,3 @@ RUN export ARCH="$(uname -m)" && \
     echo "PATH="${PATH}"" >> ${HOME}/.bashrc && \
     echo "GCC_HOME="${GCC_HOME}"" >> ${HOME}/.bashrc && \
     echo "JAVA_HOME="${JAVA_HOME}"" >> ${HOME}/.bashrc && \
-    git config --global http.version HTTP/1.1 && \
-    git config --global http.postBuffer 157286400
