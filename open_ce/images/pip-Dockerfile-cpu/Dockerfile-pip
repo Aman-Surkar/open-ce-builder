@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi9/ubi
 
 RUN export ARCH="$(uname -m)" && \
-    yum install -y git make gcc-toolset-12 python3.12-pip python3.12 python3.12-devel java-11-openjdk unzip git-lfs && \
+    yum install -y git make gcc-toolset-12 python3.12-pip python3.12 python3.12-devel unzip java-11-openjdk java-11-openjdk-devel zip && \
     export PATH="/opt/rh/gcc-toolset-12/root/usr/bin:${PATH}" && \
     export GCC_HOME="/opt/rh/gcc-toolset-12/root/usr" && \
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.25.0.9-2.el9.ppc64le" && \
