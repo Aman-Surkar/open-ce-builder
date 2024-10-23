@@ -8,4 +8,4 @@ RUN export ARCH="$(uname -m)" && \
     export GCC_HOME="/opt/rh/gcc-toolset-12/root/usr" && \
     echo "PATH="${PATH}"" >> ${HOME}/.profile && \
     echo "PATH="${PATH}"" >> ${HOME}/.bashrc && \
-    echo "GCC_HOME="${GCC_HOME}"" >> ${HOME}/.bashrc && \
+    echo "GCC_HOME="${GCC_HOME}"" >> ${HOME}/.bashrc
