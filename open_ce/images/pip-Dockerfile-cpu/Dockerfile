@@ -1,0 +1,23 @@
+FROM registry.access.redhat.com/ubi9/ubi
+
+ENV CICD_GROUP=cicd
+ARG GROUP_ID=1500
+ENV BUILD_USER=builder
+ARG BUILD_ID=1084
+
+RUN export ARCH="$(uname -m)" && \
+    yum install -y git make gcc-toolset-12 python3.12-pip python3.12 python3.12-devel unzip java-11-openjdk java-11-openjdk-devel zip && \
+    # Create CICD Group
+    groupadd --non-unique --gid ${GROUP_ID} ${CICD_GROUP} && \
+    # Adduser Builder
+    useradd -b /home --non-unique --create-home --gid ${GROUP_ID} --groups wheel \
+    --uid ${BUILD_ID} --comment "User for Building" ${BUILD_USER} && \
+    pip3.12 install virtualenv
+
+USER ${BUILD_USER}
+RUN export PATH="/opt/rh/gcc-toolset-12/root/usr/bin:${PATH}" && \
+    export GCC_HOME="/opt/rh/gcc-toolset-12/root/usr" && \
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.25.0.9-2.el9.ppc64le" && \
+    echo "PATH="${PATH}"" >> ${HOME}/.profile && \
+    echo "PATH="${PATH}"" >> ${HOME}/.bashrc && \
+    echo "GCC_HOME="${GCC_HOME}"" >> ${HOME}/.bashrc
