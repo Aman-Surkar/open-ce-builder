@@ -6,7 +6,7 @@ ENV BUILD_USER=builder
 ARG BUILD_ID=1084
 
 RUN export ARCH="$(uname -m)" && \
-    yum install -y git make gcc-toolset-12 python3.12-pip python3.12 python3.12-devel unzip java-11-openjdk java-11-openjdk-devel zip && \
+    yum install -y git make gcc-toolset-13 python3.12-pip python3.12 python3.12-devel unzip java-11-openjdk java-11-openjdk-devel zip && \
     # Create CICD Group
     groupadd --non-unique --gid ${GROUP_ID} ${CICD_GROUP} && \
     # Adduser Builder
@@ -16,9 +16,8 @@ RUN export ARCH="$(uname -m)" && \
     ln -s /usr/bin/python3.12 /usr/local/bin/python
 
 USER ${BUILD_USER}
-RUN export PATH="/opt/rh/gcc-toolset-12/root/usr/bin:${PATH}" && \
-    export GCC_HOME="/opt/rh/gcc-toolset-12/root/usr" && \
-    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.25.0.9-2.el9.ppc64le" && \
+RUN export PATH="/opt/rh/gcc-toolset-13/root/usr/bin:${PATH}" && \
+    export GCC_HOME="/opt/rh/gcc-toolset-13/root/usr" && \
     echo "PATH="${PATH}"" >> ${HOME}/.profile && \
     echo "PATH="${PATH}"" >> ${HOME}/.bashrc && \
     echo "GCC_HOME="${GCC_HOME}"" >> ${HOME}/.bashrc
