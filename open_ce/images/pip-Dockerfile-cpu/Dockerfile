@@ -12,7 +12,8 @@ RUN export ARCH="$(uname -m)" && \
     # Adduser Builder
     useradd -b /home --non-unique --create-home --gid ${GROUP_ID} --groups wheel \
     --uid ${BUILD_ID} --comment "User for Building" ${BUILD_USER} && \
-    pip3.12 install virtualenv
+    pip3.12 install virtualenv && \
+    ln -s /usr/bin/python3.12 /usr/local/bin/python
 
 USER ${BUILD_USER}
 RUN export PATH="/opt/rh/gcc-toolset-12/root/usr/bin:${PATH}" && \
